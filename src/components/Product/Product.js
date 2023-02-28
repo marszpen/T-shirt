@@ -6,7 +6,7 @@ import { useState } from 'react';
 
 const Product = props => {
   const [currentColor, setActiveColor] = useState('white');
-  const [activeSize, setActiveSize] = useState ('S');
+  const [currentSize, setActiveSize] = useState ('S');
 
 
   return (
@@ -14,7 +14,7 @@ const Product = props => {
       <div className={styles.imageContainer}>
         <img 
           className={styles.image}
-          alt="Kodilla shirt"
+          alt={props.title}
           src={`${process.env.PUBLIC_URL}/images/products/shirt-kodilla--${currentColor}.jpg`} />
       </div>
       <div>
