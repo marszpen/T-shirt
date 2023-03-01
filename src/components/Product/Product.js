@@ -5,9 +5,8 @@ import PropTypes from 'prop-types';
 import { useState } from 'react';
 
 const Product = props => {
-  const [currentColor, setActiveColor] = useState('white');
-  const [currentSize, setActiveSize] = useState ('S');
-
+  const [currentColor, setActiveColor] = useState(props.colors[0]);
+  const [currentSize, setActiveSize] = useState (props.sizes[0].name);
 
   return (
     <article className={styles.product}>
@@ -15,7 +14,7 @@ const Product = props => {
         <img 
           className={styles.image}
           alt={props.title}
-          src={`${process.env.PUBLIC_URL}/images/products/shirt-kodilla--${currentColor}.jpg`} />
+          src={`${process.env.PUBLIC_URL}/images/products/shirt-${props.name}--${currentColor}.jpg`} />
       </div>
       <div>
         <header>
@@ -26,10 +25,17 @@ const Product = props => {
           <div className={styles.sizes}>
             <h3 className={styles.optionLabel}>Sizes</h3>
             <ul className={styles.choices}>
-              <li><button type="button" className={styles.active}>S</button></li>
-              <li><button type="button">M</button></li>
-              <li><button type="button">L</button></li>
-              <li><button type="button">XL</button></li>
+              {props.sizes.map(sizeObj => (
+                <li>
+                  <button
+                    className={clsx(sizeObj.name === currentSize && styles.active)}
+                    type="button"
+                    onClick={() => setActiveSize(sizeObj.name)}
+                  >
+                    {sizeObj.name}
+                  </button>
+                </li>
+              ))}
             </ul>
           </div>
           <div className={styles.colors}>
@@ -49,5 +55,5 @@ const Product = props => {
   )
 };
 
-Product.PropTypes = { props: PropTypes.any.isRequired };
+Product.propTypes = { props: PropTypes.any.isRequired };
 export default Product;

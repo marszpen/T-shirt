@@ -6,27 +6,9 @@ const Products = () => {
   const [products]  = useState(productsData);
 
   return ( 
-    /*<section>
-        id={products[0].id}
-        name={products[0].name}
-        title={products[0].title} 
-        colors={products[0].colors}
-        sizes={products[0].sizes}
-        basePrice={products[0].basePrice}
-    </section>*/
     <section>
-        {products.map (product => <Product key={product.id} {...products[0]} {...products[1]} />)}
-     </section>
- 
-     /* <Product
-        id={products[1].id}
-        name={products[1].name}
-        title={products[1].title}
-        colors={products[1].colors}
-        sizes={products[1].sizes}
-        basePrice={products[1].basePrice} />
-    </section>*/
-    
+      {products.map (product => <Product key={product.id} {...product} />)}
+    </section>
   );
 };
 
