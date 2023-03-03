@@ -7,9 +7,13 @@ import { useState } from 'react';
 const Product = props => {
   const [currentColor, setActiveColor] = useState(props.colors[0]);
   const [currentSize, setActiveSize] = useState (props.sizes[0].name);
+  
   const colorClassName = colorObj => {
     return styles['color' + colorObj[0].toUpperCase() + colorObj.substr(1).toLowerCase()];
-  }
+  };
+  const getPrice = () => {
+    return props.basePrice + props.sizes[0];
+  };
 
   return (
     <article className={styles.product}>
@@ -22,7 +26,7 @@ const Product = props => {
       <div>
         <header>
           <h2 className={styles.name}>{props.title}</h2>
-          <span className={styles.price}>{props.basePrice}</span>
+          <span className={styles.price}>Price: {getPrice()}$</span>
         </header>
         <form>
           <div className={styles.sizes}>
@@ -47,8 +51,8 @@ const Product = props => {
             {props.colors.map((colorObj) => (
                 <li key={colorObj}>
                   <button onClick={() => {
-                setActiveColor(colorObj);
-              }}
+                  setActiveColor(colorObj);
+                  }}
                     type='button'
                     className={clsx(
                       colorClassName(colorObj),
