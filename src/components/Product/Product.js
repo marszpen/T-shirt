@@ -7,6 +7,9 @@ import { useState } from 'react';
 const Product = props => {
   const [currentColor, setActiveColor] = useState(props.colors[0]);
   const [currentSize, setActiveSize] = useState (props.sizes[0].name);
+  const colorClassName = colorObj => {
+    return styles['color' + colorObj[0].toUpperCase() + colorObj.substr(1).toLowerCase()];
+  }
 
   return (
     <article className={styles.product}>
@@ -41,9 +44,19 @@ const Product = props => {
           <div className={styles.colors}>
             <h3 className={styles.optionLabel}>Colors</h3>
             <ul className={styles.choices}>
-              <li><button type="button" className={clsx(styles.colorBlack, styles.active)} /></li>
-              <li><button type="button" className={clsx(styles.colorRed)} /></li>
-              <li><button type="button" className={clsx(styles.colorWhite)} /></li>
+            {props.colors.map((colorObj) => (
+                <li key={colorObj}>
+                  <button onClick={() => {
+                setActiveColor(colorObj);
+              }}
+                    type='button'
+                    className={clsx(
+                      colorClassName(colorObj),
+                      colorObj === currentColor && styles.active
+                    )}
+                  />
+                </li>
+              ))}
             </ul>
           </div>
           <Button className={styles.button}>
