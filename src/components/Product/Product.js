@@ -1,17 +1,22 @@
 import styles from './Product.module.scss';
-import Button from '../Button/Button';
 import PropTypes from 'prop-types';
 import ProductImage from '../ProductImage/ProductImage';
-import OptionSize from '../OptionSize/OptionSize';
-import OptionColor from '../OptionColor/OptionColor';
+import ProductForm from '../ProductForm/ProductForm';
 import { useState } from 'react';
 
-const Product = props => {
+const Product = (props) => {
   const [currentSize, setActiveSize] = useState (props.sizes[0].name);
   const [currentColor, setActiveColor] = useState(props.colors[0]); 
   const getPrice = () => {
     return props.basePrice + props.sizes[0];
   };
+  const cart = () => {
+    console.log('Summary');
+    console.log('Name: ', props.title);
+    console.log('Price: ', getPrice());
+    console.log('Size: ', currentSize);
+    console.log('Color: ', currentColor);
+  }
 
   return (
     <article className={styles.product}>
@@ -22,10 +27,18 @@ const Product = props => {
           <span className={styles.price}>Price: {getPrice()}$</span>
         </header>
         <form>
-        <ProductForm />
-          <Button className={styles.button}>
-            <span className="fa fa-shopping-cart" />
-          </Button>
+        <ProductForm 
+        sizes={props.sizes}
+        sizeObj={props.sizeObj}
+        currentSize={currentSize}
+        setCurrentSize={setActiveSize}
+        price={props.currentPrice}
+        colorObj={props.colorObj}
+        currentColor={currentColor}
+        setCurrentColor={setActiveColor}
+        onClick={props.onClick}
+        cart ={cart}
+        />
         </form>
       </div>
     </article>

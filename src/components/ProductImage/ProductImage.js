@@ -7,10 +7,16 @@ const ProductImage = (props) => {
         <img 
           className={styles.image}
           alt={props.title}
-          src={`${process.env.PUBLIC_URL}/images/products/shirt-${props.name}--${currentColor}.jpg`} />
+          src={`${process.env.PUBLIC_URL}/images/products/shirt-${props.name}--${props.currentColor}.jpg`} />
     </div>
     );
 };
 
-Product.propTypes = { props: PropTypes.any.isRequired };
+ProductImage.propTypes = {
+    imageContainer:PropTypes.array.isRequired,
+    image:PropTypes.array.isRequired,
+    title:PropTypes.array.isRequired,
+    name:PropTypes.array.isRequired,
+    currentColor:PropTypes.array.isRequired
+}
 export default ProductImage;

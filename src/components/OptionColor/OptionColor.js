@@ -13,12 +13,12 @@ const OptionColor = (props) => {
             {props.colors.map((colorObj) => (
                 <li key={colorObj}>
                   <button onClick={() => {
-                  setActiveColor(colorObj);
+                  props.setActiveColor(colorObj);
                   }}
                     type='button'
                     className={clsx(
                       colorClassName(colorObj),
-                      colorObj === currentColor && styles.active
+                      colorObj === props.currentColor && styles.active
                     )}
                   />
                 </li>
@@ -28,5 +28,9 @@ const OptionColor = (props) => {
     );
 };
 
-Product.propTypes = { props: PropTypes.any.isRequired };
+OptionColor.propTypes = { 
+  colorObj: PropTypes.any.isRequired,
+  currentColor: PropTypes.string.isRequired,
+  setCurrentColor: PropTypes.func.isRequired
+ };
 export default OptionColor;
