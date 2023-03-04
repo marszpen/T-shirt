@@ -4,9 +4,11 @@ import PropTypes from 'prop-types';
 import ProductImage from '../ProductImage/ProductImage';
 import OptionSize from '../OptionSize/OptionSize';
 import OptionColor from '../OptionColor/OptionColor';
+import { useState } from 'react';
 
 const Product = props => {
-  
+  const [currentSize, setActiveSize] = useState (props.sizes[0].name);
+  const [currentColor, setActiveColor] = useState(props.colors[0]); 
   const getPrice = () => {
     return props.basePrice + props.sizes[0];
   };
@@ -20,8 +22,7 @@ const Product = props => {
           <span className={styles.price}>Price: {getPrice()}$</span>
         </header>
         <form>
-          <OptionSize />
-          <OptionColor />
+        <ProductForm />
           <Button className={styles.button}>
             <span className="fa fa-shopping-cart" />
           </Button>

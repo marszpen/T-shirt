@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import productsData from '../../data/products';
 import Product from '../Product/Product';
+import PropTypes from 'prop-types';
 
 const Products = () => {
   const [products]  = useState(productsData);
@@ -12,4 +13,5 @@ const Products = () => {
   );
 };
 
+Product.propTypes = { props: PropTypes.any.isRequired };
 export default Products;

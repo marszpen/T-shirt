@@ -1,9 +1,9 @@
 import styles from './OptionSize.module.scss';
 import clsx from 'clsx';
-import { useState } from 'react';
+import PropTypes from 'prop-types';
 
 const OptionSize = (props) => {
-  const [currentSize, setActiveSize] = useState (props.sizes[0].name);
+  
     
   return (
     <div className={styles.sizes}>
@@ -14,7 +14,7 @@ const OptionSize = (props) => {
               <button
                 className={clsx(sizeObj.name === currentSize && styles.active)}
                   type="button"
-                  onClick={() => setActiveSize(sizeObj.name)}
+                  onClick={() => props.setActiveSize(sizeObj.name)}
               >
               {sizeObj.name}
               </button>
@@ -25,4 +25,5 @@ const OptionSize = (props) => {
   );
 };
 
+Product.propTypes = { props: PropTypes.any.isRequired };
 export default OptionSize;

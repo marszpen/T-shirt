@@ -1,4 +1,5 @@
 import styles from './Header.module.scss';
+import PropTypes from 'prop-types';
 
 const Header = () => (
     <header>
@@ -6,5 +7,6 @@ const Header = () => (
     </header>
 );
 
+Product.propTypes = { props: PropTypes.any.isRequired };
 export default Header;
 

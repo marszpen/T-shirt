@@ -1,9 +1,8 @@
 import styles from './OptionColor.module.scss';
 import clsx from 'clsx';
-import { useState } from 'react';
+import PropTypes from 'prop-types';
 
-const OptionColor = () => {
-  const [currentColor, setActiveColor] = useState(props.colors[0]); 
+const OptionColor = (props) => {
   const colorClassName = colorObj => {
     return styles['color' + colorObj[0].toUpperCase() + colorObj.substr(1).toLowerCase()];
   };
@@ -29,4 +28,5 @@ const OptionColor = () => {
     );
 };
 
+Product.propTypes = { props: PropTypes.any.isRequired };
 export default OptionColor;

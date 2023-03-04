@@ -1,4 +1,5 @@
 import styles from './ProductImage.module.scss';
+import PropTypes from 'prop-types';
 
 const ProductImage = (props) => {
     return (
@@ -11,4 +12,5 @@ const ProductImage = (props) => {
     );
 };
 
+Product.propTypes = { props: PropTypes.any.isRequired };
 export default ProductImage;
