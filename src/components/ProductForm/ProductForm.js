@@ -6,6 +6,7 @@ import styles from './ProductForm.module.scss'
 
 
 const ProductForm = (props) => {
+    return (
     <form>
         <OptionSize currentSize={props.currentSize} setActiveSize={props.setActiveSize}/>
         <OptionColor currentColor={props.currentColor} setActiveColor={props.setActiveColor}/>
@@ -13,6 +14,7 @@ const ProductForm = (props) => {
         <span className='fa fa-shopping-cart' />
         </Button>
     </form>
+    );
 };
 
 ProductForm.propTypes = {   
